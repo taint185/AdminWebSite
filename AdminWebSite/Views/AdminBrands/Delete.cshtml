@@ -1,0 +1,46 @@
+﻿@model AdminWebSite.Models.Brand
+
+<div class="content-wrapper">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12 grid-margin stretch-card">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Delete brand</h4>
+                        <h3>Are you sure you want to delete this?</h3>
+
+                        <hr />
+                        <h6 style="color:red;">@ViewBag.Error</h6>
+                        <p class="card-description">
+                            @Html.DisplayNameFor(model => model.BrandName) :
+
+                            @Html.DisplayFor(model => model.BrandName)
+                        </p>
+                        <p class="card-description">
+                            @Html.DisplayNameFor(model => model.Description) :
+                        </p>
+                        <p>
+
+                            @Html.DisplayFor(model => model.Description)
+                        </p>
+                        @using (Html.BeginForm())
+                        {
+                            @Html.AntiForgeryToken()
+
+                            <div class="form-actions no-color">
+                                <input type="submit" value="Delete" class="btn btn-danger btn-rounded btn-fw" />
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <a href="/AdminBrands/Index" class="btn btn-inverse-dark btn-fw" style="text-align:left;"><i class="fa fa-backward"></i>Back to list</a>
+
+        </div>
+    </div>
+</div>

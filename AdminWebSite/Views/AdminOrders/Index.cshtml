@@ -1,0 +1,74 @@
+﻿@*@model IEnumerable<AdminWebSite.Models.Order>*@
+@using AdminWebSite.Models
+@{
+    DBWatchEntities db = new DBWatchEntities();
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="content-wrapper">
+    <div class="container-fluid">
+        <!-- Example DataTables Card-->
+        <div class="card mb-3">
+            <div class="card-header">
+                <h3><i class="fa fa-table"></i> History order</h3>
+                <p style="text-align:right;" hidden>
+                    <a href="/AdminCategories/Create/" type="button" class="btn btn-outline-success"><i class="fa fa-plus"> Create New</i></a>
+                </p>
+            </div>
+
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                        <thead>
+                            <tr>
+
+                                <th>
+
+                                    Product Name
+                                </th>
+                                <th>
+                                    Quantity
+                                </th>
+                                <th>
+                                    Date order
+                                </th>
+                                <th>
+                                    User name
+                                </th>
+                                <th>Total</th>
+                                <th style="text-align:center" hidden>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            @foreach (var item in db.OrderDetail)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Product.ProName)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Quantity)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Order.Date)
+                                    </td>
+
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Order.CusName)
+                                    </td>
+                                    <td> @int.Parse(item.Price.ToString())*@int.Parse(item.Quantity.ToString())</td>>
+                                    <td style="text-align:center;" hidden>
+                                        <a href="/AdminCustomer/Details/@item.OrderDetailID" type="button" class="btn btn-outline-info"><i class="fa fa-vcard-o"></i>Details</a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

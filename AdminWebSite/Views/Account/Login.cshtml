@@ -1,0 +1,80 @@
+﻿@model WebSite.Models.Login
+
+@{
+    ViewBag.Title = "Login";
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title> Admin Leo Shop</title>
+
+    <script src="~/Content/node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <!-- plugins:css -->
+    <link rel="stylesheet" href="~/Content/node_modules/mdi/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="~/Content/node_modules/simple-line-icons/css/simple-line-icons.css">
+    <!-- endinject -->
+    <!-- plugin css for this page -->
+    <!-- End plugin css for this page -->
+    <!-- inject:css -->
+    <link rel="stylesheet" href="~/Content/css/style.css">
+    <link rel="stylesheet" href="~/Content/scss/landing-screens/_auth.scss" >
+    <!-- endinject -->
+    <link rel="shortcut icon" href="~/Content/images/favicon.png" />
+</head>
+<body>
+    @using (Html.BeginForm("Login", "Account", FormMethod.Post))
+    {
+
+        <div class="container-scroller">
+            <div class="container-fluid page-body-wrapper full-page-wrapper">
+                <div class="content-wrapper d-flex align-items-center auth login-full-bg">
+                    <div class="row w-100">
+                        <div class="col-lg-4 mx-auto">
+                            <div class="auth-form-dark text-left p-5">
+                                <h2>Login</h2>
+                                <h4 class="font-weight-light">Hello! let's get started</h4>
+                               
+                                    <form class="pt-5" method="post" name="login" id="login-form">
+                                        <fieldset class="input">
+                                            <input type="hidden" name="uri" value="@ViewBag.uri" />
+                                            <h5 style="color:red">@ViewBag.Message</h5>
+                                            <div class="form-group">
+                                                <label for="modlgn_username">User Name</label>
+                                                @Html.TextBoxFor(a => a.username, new { @style = "background: transparent;", @class = "form-control ", @placeholder = "Enter your username", id = "modlgn_username", size = "18", autocomplete = "off" })
+                                                @Html.ValidationMessageFor(a => a.username, "", new { @class = "text-danger", @style = "color:red" })
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="exampleInputPassword1">Password</label>
+                                                @Html.TextBoxFor(a => a.password, new {@type ="password", @style = "background: transparent;", @class = "form-control ", @placeholder = "Enter your password", id = "modlgn_username", size = "18", autocomplete = "off" })
+                                                @Html.ValidationMessageFor(a => a.username, "", new { @class = "text-danger", @style = "color:red" })
+                                            </div>
+                                            <div class="remember">
+                                                <input type="submit" name="Submit" class="btn btn-block btn-warning btn-lg font-weight-medium" value="Login"><div class="clear"></div>
+
+                                            </div>
+                                        </fieldset>
+                                    </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- content-wrapper ends -->
+            </div>
+            <!-- page-body-wrapper ends -->
+        </div>
+    }
+    <!-- container-scroller -->
+    <!-- plugins:js -->
+    <script src="~/Content/node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="~/Content/node_modules/popper.js/dist/umd/popper.min.js"></script>
+    <!-- endinject -->
+    <!-- inject:js -->
+    <script src="~/Content/js/off-canvas.js"></script>
+    <script src="~/Content/js/misc.js"></script>
+    <!-- endinject -->
+</body>
+</html>

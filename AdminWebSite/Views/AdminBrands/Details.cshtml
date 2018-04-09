@@ -1,0 +1,36 @@
+﻿@model AdminWebSite.Models.Brand
+
+<div class="content-wrapper">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12 grid-margin stretch-card">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Details brand</h4>
+                        <p class="card-description">
+                            @Html.DisplayNameFor(model => model.BrandName) :
+
+                            @Html.DisplayFor(model => model.BrandName)
+                        </p>
+                        <p class="card-description">
+                            @Html.DisplayNameFor(model => model.Description) :
+                        </p>
+                        <p>
+
+                            @Html.DisplayFor(model => model.Description)
+                        </p>
+                        <a href="/AdminBrands/Edit/@Model.BrandID" class="btn btn-success btn-rounded btn-fw" style="float:left;"><i class="fa fa-edit"></i>Edit brand</a>
+                        <a href="/AdminBrands/Delete/@Model.BrandID" class="btn btn-danger btn-rounded btn-fw" style="float:right;"><i class="fa fa-trash-o"></i>Delete brand</a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <a href="/AdminBrands/Index" class="btn btn-inverse-dark btn-fw" style="text-align:left;"><i class="fa fa-backward"></i>Back to list</a>
+               
+            </div>
+        </div>
+    </div>
+</div>

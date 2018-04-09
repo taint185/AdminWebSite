@@ -1,0 +1,62 @@
+﻿@model AdminWebSite.Models.Product
+
+<div class="content-wrapper">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12 grid-margin stretch-card">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Details product</h4>
+                        <p class="card-description">
+                            @Html.DisplayNameFor(model => model.ProName) :
+
+                            @Html.DisplayFor(model => model.ProName)
+                        </p>
+                        <p class="card-description">
+                            @Html.DisplayNameFor(model => model.Categories.CateName) :
+
+                            @Html.DisplayFor(model => model.Categories.CateName)
+                        </p>
+                        <p class="card-description">
+                            @Html.DisplayNameFor(model => model.Brand.BrandName) :
+
+                            @Html.DisplayFor(model => model.Brand.BrandName)
+                        </p>
+                        <p class="card-description">
+                            @Html.DisplayNameFor(model => model.Origin) :
+
+                            @Html.DisplayFor(model => model.Origin)
+                        </p>
+                        <p class="card-description">
+                            @Html.DisplayNameFor(model => model.Price) :
+
+                            @Html.DisplayFor(model => model.Price)
+                        </p>
+                        <p class="card-description">
+                            @Html.DisplayNameFor(model => model.Description) :
+                        </p>
+                        <p>
+
+                            @Html.DisplayFor(model => model.Description)
+                        </p>
+                        <p class="card-description">
+                            @Html.DisplayNameFor(model => model.Image) :
+                        </p>
+                        <p>
+                            <img style="width:420px;height:280px" src="@Url.Content("~/Content/images/hinh/")@Model.Image" />
+                        </p>
+                        <a href="/AdminProducts/Edit/@Model.ProID" class="btn btn-success btn-rounded btn-fw" style="float:left;"><i class="fa fa-edit"></i>Edit product</a>
+                        <a href="/AdminProducts/Delete/@Model.ProID" class="btn btn-danger btn-rounded btn-fw" style="float:right;"><i class="fa fa-trash-o"></i>Delete product</a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <a href="/AdminProducts/Index" class="btn btn-inverse-dark btn-fw" style="text-align:left;"><i class="fa fa-backward"></i>Back to list</a>
+
+            </div>
+        </div>
+    </div>
+</div>

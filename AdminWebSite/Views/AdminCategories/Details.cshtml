@@ -1,0 +1,29 @@
+﻿@model AdminWebSite.Models.Categories
+
+<div class="content-wrapper">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12 grid-margin stretch-card">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Details Category</h4>
+                        <p class="card-description">
+                            @Html.DisplayNameFor(model => model.CateName) :
+
+                            <h4>@Html.DisplayFor(model => model.CateName)</h4>
+                        </p>
+                        <a href="/AdminCategories/Edit/@Model.CateID" class="btn btn-success btn-rounded btn-fw" style="float:left;"><i class="fa fa-edit"></i>Edit category</a>
+                        <a href="/AdminCategories/Delete/@Model.CateID" class="btn btn-danger btn-rounded btn-fw" style="float:right;"><i class="fa fa-trash-o"></i>Delete category</a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <a href="/AdminCategories/Index" class="btn btn-inverse-dark btn-fw" style="text-align:left;"><i class="fa fa-backward"></i>Back to list</a>
+
+            </div>
+        </div>
+    </div>
+</div>
