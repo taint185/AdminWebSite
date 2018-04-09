@@ -11,7 +11,8 @@ namespace AdminWebSite.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Product
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -19,17 +20,23 @@ namespace AdminWebSite.Models
         {
             this.OrderDetail = new HashSet<OrderDetail>();
         }
-    
+
         public int ProID { get; set; }
+        [Required(ErrorMessage = "You must enter product name.")]
         public string ProName { get; set; }
+        [Required(ErrorMessage = "You must choose category for product.")]
         public Nullable<int> CateID { get; set; }
+        [RegularExpression(@"^\d{1,5}$", ErrorMessage = "You must enter the number.")]
         public Nullable<int> Price { get; set; }
         public Nullable<bool> Specials { get; set; }
+        [Required(ErrorMessage = "You must enter description.")]
         public string Description { get; set; }
+        [Required(ErrorMessage = "You must enter origin.")]
         public string Origin { get; set; }
+        [RegularExpression(@"\.(jpg)$", ErrorMessage = "You must select files with jpg, png, jpeg, bmp, gif.")]
         public string Image { get; set; }
         public Nullable<int> BrandID { get; set; }
-    
+        [Required(ErrorMessage = "You must choose brand for product.")]
         public virtual Brand Brand { get; set; }
         public virtual Categories Categories { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
