@@ -11,7 +11,8 @@ namespace AdminWebSite.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Brand
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -21,7 +22,9 @@ namespace AdminWebSite.Models
         }
     
         public int BrandID { get; set; }
+        [Required(ErrorMessage ="You must enter brand name.")]
         public string BrandName { get; set; }
+        [Required(ErrorMessage = "You must enter brand description.")]
         public string Description { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
