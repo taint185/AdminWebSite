@@ -680,13 +680,13 @@
     <Content Include="Views\AdminCategories\Delete.cshtml" />
     <Content Include="Views\AdminCategories\Details.cshtml" />
     <Content Include="Views\AdminCategories\Index.cshtml" />
+    <Content Include="Views\AdminCategories\Create.cshtml" />
+    <Content Include="Views\AdminCategories\Edit.cshtml" />
     <Content Include="Views\AdminProducts\Create.cshtml" />
     <Content Include="Views\AdminProducts\Delete.cshtml" />
     <Content Include="Views\AdminProducts\Details.cshtml" />
     <Content Include="Views\AdminProducts\Edit.cshtml" />
     <Content Include="Views\AdminProducts\Index.cshtml" />
-    <Content Include="Views\AdminCategories\Create.cshtml" />
-    <Content Include="Views\AdminCategories\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

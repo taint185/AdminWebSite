@@ -6,7 +6,7 @@
             <div class="col-md-12 grid-margin stretch-card">
                 <div class="card">
                     <div class="card-body">
-                        <h4 class="card-title">Details product</h4>
+                        <h4 class="card-title">Details brand</h4>
                         <p class="card-description">
                             @Html.DisplayNameFor(model => model.ProName) :
 
@@ -41,10 +41,9 @@
                         </p>
                         <p class="card-description">
                             @Html.DisplayNameFor(model => model.Image) :
+                            <img style="max-width:50%;" src="@Url.Content("/Content/images/hinh/")@Model.Image" />
                         </p>
-                        <p>
-                            <img style="width:420px;height:280px" src="@Url.Content("~/Content/images/hinh/")@Model.Image" />
-                        </p>
+
                         <a href="/AdminProducts/Edit/@Model.ProID" class="btn btn-success btn-rounded btn-fw" style="float:left;"><i class="fa fa-edit"></i>Edit product</a>
                         <a href="/AdminProducts/Delete/@Model.ProID" class="btn btn-danger btn-rounded btn-fw" style="float:right;"><i class="fa fa-trash-o"></i>Delete product</a>
                     </div>

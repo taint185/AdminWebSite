@@ -33,10 +33,11 @@ namespace AdminWebSite.Models
         public string Description { get; set; }
         [Required(ErrorMessage = "You must enter origin.")]
         public string Origin { get; set; }
-        [RegularExpression(@"\.(jpg)$", ErrorMessage = "You must select files with jpg, png, jpeg, bmp, gif.")]
+        [Required(ErrorMessage = "You must choose image for product.")]
         public string Image { get; set; }
-        public Nullable<int> BrandID { get; set; }
         [Required(ErrorMessage = "You must choose brand for product.")]
+        public Nullable<int> BrandID { get; set; }
+
         public virtual Brand Brand { get; set; }
         public virtual Categories Categories { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

@@ -1,10 +1,11 @@
 ﻿@model IEnumerable<AdminWebSite.Models.Product>
+
 <div class="content-wrapper">
     <div class="container-fluid">
         <!-- Example DataTables Card-->
         <div class="card mb-3">
             <div class="card-header">
-                <h3><i class="fa fa-table"></i> List all brands</h3>
+                <h3><i class="fa fa-table"></i> List all Products</h3>
                 <p style="text-align:right;">
                     <a href="/AdminProducts/Create/" type="button" class="btn btn-outline-success"><i class="fa fa-plus"> Create New</i></a>
                 </p>
@@ -13,19 +14,17 @@
             <div class="card-body">
                 <div class="table-responsive">
                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+
                         <thead>
                             <tr>
                                 <th>
                                     @Html.DisplayNameFor(model => model.ProName)
                                 </th>
                                 <th>
-                                    @Html.DisplayNameFor(model => model.Categories.CateName)
-                                </th>
-                                <th>
-                                    @Html.DisplayNameFor(model => model.Brand.BrandName)
-                                </th>
-                                <th>
                                     @Html.DisplayNameFor(model => model.Price)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Description)
                                 </th>
                                 <th>
                                     @Html.DisplayNameFor(model => model.Origin)
@@ -34,7 +33,10 @@
                                     @Html.DisplayNameFor(model => model.Image)
                                 </th>
                                 <th>
-                                    @Html.DisplayNameFor(model => model.Description)
+                                    @Html.DisplayNameFor(model => model.Brand.BrandName)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Categories.CateName)
                                 </th>
                                 <th style="text-align:center">Action</th>
                             </tr>
@@ -43,34 +45,36 @@
 
                             @foreach (var item in Model)
                             {
-                                <tr>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.ProName)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.Categories.CateName)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.Brand.BrandName)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.Price)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.Origin)
-                                    </td>
-                                    <td>
-                                        <img style="max-width:50%;" src="@Url.Content("~/Content/images/hinh/")@item.Image" />
-                                    </td>
-                                    <td style="max-width:150px; text-overflow:ellipsis;">
-                                        @Html.DisplayFor(modelItem => item.Description)
-                                    </td>
-                                    <td style="text-align:center;">
-                                        <a href="/AdminProducts/Details/@item.ProID" type="button" class="btn btn-outline-info"><i class="fa fa-vcard-o"></i>Details</a>
-                                    </td>
-                                </tr>
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.ProName)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Price)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Description)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Origin)
+                                </td>
+                                <td>
+                                    <img style="max-width:50%;" src="@Url.Content("/Content/images/hinh/")@item.Image" />
+
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Brand.BrandName)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Categories.CateName)
+                                </td>
+                                <td style="text-align:center;">
+                                    <a href="/AdminProducts/Details/@item.ProID" type="button" class="btn btn-outline-info"><i class="fa fa-vcard-o"></i>Details</a>
+                                </td>
+                            </tr>
                             }
                         </tbody>
+
                     </table>
                 </div>
             </div>

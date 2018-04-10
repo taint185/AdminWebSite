@@ -1,53 +1,89 @@
 ﻿@model AdminWebSite.Models.Product
-<div class="content-wrapper">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-12 grid-margin stretch-card">
-                <div class="card">
-                    <div class="card-body">
-                        <h4 class="card-title">Delete Product</h4>
-                        <h3>Are you sure you want to delete this?</h3>
 
-                        <hr />
-                        <h6 style="color:red;">@ViewBag.Error</h6>
-                        <p class="card-description">
-                            @Html.DisplayNameFor(model => model.ProName) :
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
 
-                            @Html.DisplayFor(model => model.ProName)
-                        </p>
-                        <p class="card-description">
-                            @Html.DisplayNameFor(model => model.Categories.CateName) :
+<h2>Delete</h2>
 
-                            @Html.DisplayFor(model => model.Categories.CateName)
-                        </p>
-                        <p class="card-description">
-                            @Html.DisplayNameFor(model => model.Brand.BrandName) :
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Product</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ProName)
+        </dt>
 
-                            @Html.DisplayFor(model => model.Brand.BrandName)
-                        </p>
-                        <p class="card-description">
-                            @Html.DisplayNameFor(model => model.Origin) :
+        <dd>
+            @Html.DisplayFor(model => model.ProName)
+        </dd>
 
-                            @Html.DisplayFor(model => model.Origin)
-                        </p>
-                        @using (Html.BeginForm())
-                        {
-                            @Html.AntiForgeryToken()
+        <dt>
+            @Html.DisplayNameFor(model => model.Price)
+        </dt>
 
-                            <div class="form-actions no-color">
-                                <input type="submit" value="Delete" class="btn btn-danger btn-rounded btn-fw" />
-                            </div>
-                        }
-                    </div>
-                </div>
-            </div>
+        <dd>
+            @Html.DisplayFor(model => model.Price)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Specials)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Specials)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Origin)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Origin)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Image)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Image)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Brand.BrandName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Brand.BrandName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Categories.CateName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Categories.CateName)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
         </div>
-    </div>
-
-    <div class="row">
-        <div class="col-md-12">
-            <a href="/AdminProducts/Index" class="btn btn-inverse-dark btn-fw" style="text-align:left;"><i class="fa fa-backward"></i>Back to list</a>
-
-        </div>
-    </div>
+    }
 </div>
