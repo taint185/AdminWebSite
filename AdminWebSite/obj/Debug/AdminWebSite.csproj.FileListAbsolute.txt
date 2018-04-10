@@ -88,4 +88,3 @@ E:\BitBucket\AdminWebSite\AdminWebSite\bin\Microsoft.AI.Web.xml
 E:\BitBucket\AdminWebSite\AdminWebSite\obj\Debug\AdminWebSite.csproj.CoreCompileInputs.cache
 E:\BitBucket\AdminWebSite\AdminWebSite\obj\Debug\AdminWebSite.dll
 E:\BitBucket\AdminWebSite\AdminWebSite\obj\Debug\AdminWebSite.pdb
-E:\BitBucket\AdminWebSite\AdminWebSite\obj\Debug\AdminWebSite.csprojResolveAssemblyReference.cache
