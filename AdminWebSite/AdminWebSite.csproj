@@ -186,11 +186,9 @@
     <Compile Include="Models\Brand.cs">
       <DependentUpon>DBWatchEntoties.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Brands.cs" />
     <Compile Include="Models\Categories.cs">
       <DependentUpon>DBWatchEntoties.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Category.cs" />
     <Compile Include="Models\Customer.cs">
       <DependentUpon>DBWatchEntoties.tt</DependentUpon>
     </Compile>
@@ -714,14 +712,11 @@
     <Content Include="Views\AdminCategories\Delete.cshtml" />
     <Content Include="Views\AdminCategories\Details.cshtml" />
     <Content Include="Views\AdminCategories\Index.cshtml" />
-    <Content Include="Views\AdminCategories\Create.cshtml" />
-    <Content Include="Views\AdminCategories\Edit.cshtml" />
     <Content Include="Views\AdminProducts\Create.cshtml" />
     <Content Include="Views\AdminProducts\Delete.cshtml" />
     <Content Include="Views\AdminProducts\Details.cshtml" />
     <Content Include="Views\AdminProducts\Edit.cshtml" />
     <Content Include="Views\AdminProducts\Index.cshtml" />
-<<<<<<< HEAD
     <Content Include="Views\AdminCategories\Create.cshtml" />
     <Content Include="Views\AdminCategories\Edit.cshtml" />
     <Content Include="Report\OrderDataSet.xsc">
@@ -741,8 +736,6 @@
     <Content Include="Views\OrderDetail\Details.cshtml" />
     <Content Include="Views\OrderDetail\Edit.cshtml" />
     <Content Include="Views\OrderDetail\Index.cshtml" />
-=======
->>>>>>> taint185
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
