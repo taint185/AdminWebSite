@@ -50,17 +50,12 @@ namespace AdminWebSite.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(Product product, HttpPostedFileBase Image)
+        public ActionResult Create([Bind(Include = "ProID,ProName,CateID,Price,Specials,Description,Origin,Image,BrandID")] Product product)
         {
-            
             if (ModelState.IsValid)
             {
-                product.Image = System.IO.Path.GetFileName(Image.FileName);
                 db.Product.Add(product);
                 db.SaveChanges();
-                //Image.SaveAs("~/Content/images/hinh/"+product.Image);
-                Image.SaveAs(Server.MapPath(Url.Content("~/Content/images/hinh/" + product.Image)));
-
                 return RedirectToAction("Index");
             }
 
@@ -91,32 +86,29 @@ namespace AdminWebSite.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(Product product, HttpPostedFileBase Image)
+        public ActionResult Edit(Product product,HttpPostedFileBase Image)
         {
+            //product.Image = System.IO.Path.GetFileName(Image.FileName);
+
             if (ModelState.IsValid)
             {
                 var model = db.Product.Find(product.ProID);
                 string oldfilePath = model.Image;
-                if (Image != null && Image.ContentLength > 0)
+                if(Image != null && Image.ContentLength > 0)
                 {
                     var fileName = Path.GetFileName(Image.FileName);
                     string path = System.IO.Path.Combine(Server.MapPath("~/Content/images/hinh/"), fileName);
                     Image.SaveAs(path);
-                    model.Image =Image.FileName;
-                    string fullPath = Request.MapPath(oldfilePath);
+                    model.Image = "~/Content/images/hinh/" + Image.FileName;
+                    string fullPath = Request.MapPath("~" + oldfilePath);
                     if (System.IO.File.Exists(fullPath))
                     {
                         System.IO.File.Delete(fullPath);
                     }
                 }
-                 product.Image = model.Image;
+                model.Image = product.Image;
                 db.SaveChanges();
                 return RedirectToAction("Index");
-
-            }
-            else
-            {
-                ViewBag.Error = "Edit product information failed.";
             }
             ViewBag.BrandID = new SelectList(db.Brand, "BrandID", "BrandName", product.BrandID);
             ViewBag.CateID = new SelectList(db.Categories, "CateID", "CateName", product.CateID);
