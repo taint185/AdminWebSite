@@ -167,9 +167,11 @@
     <Compile Include="Models\Brand.cs">
       <DependentUpon>DBWatchEntoties.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Brands.cs" />
     <Compile Include="Models\Categories.cs">
       <DependentUpon>DBWatchEntoties.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Category.cs" />
     <Compile Include="Models\Customer.cs">
       <DependentUpon>DBWatchEntoties.tt</DependentUpon>
     </Compile>
