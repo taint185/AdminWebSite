@@ -46,15 +46,24 @@ namespace AdminWebSite.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "BrandID,BrandName,Description")] Brand brand)
+        public ActionResult Create(Brand brand)
         {
-            if (ModelState.IsValid)
-            {
-                db.Brand.Add(brand);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
 
+            var br = (from Brand in db.Brand where Brand.BrandName == brand.BrandName.ToString() select new { Brand.BrandID}).FirstOrDefault();
+            if (br != null)
+            {
+                ViewBag.Error = "This brand already exists.";
+                return View(brand);
+            }
+            else
+            {
+                if (ModelState.IsValid)
+                {
+                    db.Brand.Add(brand);
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+            }
             return View(brand);
         }
 
@@ -78,14 +87,24 @@ namespace AdminWebSite.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "BrandID,BrandName,Description")] Brand brand)
+        public ActionResult Edit(Brand brand)
         {
-            if (ModelState.IsValid)
+            var br = (from Brand in db.Brand where Brand.BrandName == brand.BrandName.ToString() select new { Brand.BrandID }).FirstOrDefault();
+            if (br != null)
             {
-                db.Entry(brand).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                ViewBag.Error = "This brand already exists.";
+                return View(brand);
             }
+            else
+            {
+                if (ModelState.IsValid)
+                {
+                    db.Entry(brand).State = EntityState.Modified;
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+            }
+              
             return View(brand);
         }
 
