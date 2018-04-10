@@ -1,4 +1,9 @@
 ﻿@model AdminWebSite.Models.Product
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
 <div class="col-12 grid-margin">
     <div class="card">
         <div class="card-body">
@@ -6,16 +11,15 @@
             <p class="card-description">
                 Create new product form
             </p>
-            @using (Html.BeginForm("Create", "Adminproducts", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            @using (Html.BeginForm())
             {
                 @Html.AntiForgeryToken()
 
                 <div class="form-horizontal">
-                    <h5 style="color:red;">@ViewBag.Error</h5>
                     <hr />
                     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                     <div class="form-group">
-                        <label class="control-label col-md-2">Product name:</label>
+                        @Html.LabelFor(model => model.ProName, htmlAttributes: new { @class = "control-label col-md-2" })
                         <div class="col-md-10">
                             @Html.EditorFor(model => model.ProName, new { htmlAttributes = new { @class = "form-control" } })
                             @Html.ValidationMessageFor(model => model.ProName, "", new { @class = "text-danger" })
@@ -23,30 +27,22 @@
                     </div>
 
                     <div class="form-group">
-                        <label class="control-label col-md-2">Category: </label>
+                        @Html.LabelFor(model => model.CateID, "CateID", htmlAttributes: new { @class = "control-label col-md-2" })
                         <div class="col-md-10">
                             @Html.DropDownList("CateID", null, htmlAttributes: new { @class = "form-control" })
                             @Html.ValidationMessageFor(model => model.CateID, "", new { @class = "text-danger" })
                         </div>
                     </div>
-
                     <div class="form-group">
-                        <label class="control-label col-md-2">Brand: </label>
+                        @Html.LabelFor(model => model.BrandID, "BrandID", htmlAttributes: new { @class = "control-label col-md-2" })
                         <div class="col-md-10">
                             @Html.DropDownList("BrandID", null, htmlAttributes: new { @class = "form-control" })
                             @Html.ValidationMessageFor(model => model.BrandID, "", new { @class = "text-danger" })
                         </div>
                     </div>
-                    <div class="form-group">
-                        <label class="control-label col-md-2">Origin: </label>
-                        <div class="col-md-10">
-                            @Html.EditorFor(model => model.Origin, new { htmlAttributes = new { @class = "form-control" } })
-                            @Html.ValidationMessageFor(model => model.Origin, "", new { @class = "text-danger" })
-                        </div>
-                    </div>
 
                     <div class="form-group">
-                        <label class="control-label col-md-2">Price: </label>
+                        @Html.LabelFor(model => model.Price, htmlAttributes: new { @class = "control-label col-md-2" })
                         <div class="col-md-10">
                             @Html.EditorFor(model => model.Price, new { htmlAttributes = new { @class = "form-control" } })
                             @Html.ValidationMessageFor(model => model.Price, "", new { @class = "text-danger" })
@@ -64,25 +60,34 @@
                     </div>
 
                     <div class="form-group">
-                        <label class="control-label col-md-2">Description: </label>
+                        @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
                         <div class="col-md-10">
                             @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
                             @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
                         </div>
                     </div>
+
                     <div class="form-group">
-                        <label class="control-label col-md-2">Image: </label>
+                        @Html.LabelFor(model => model.Origin, htmlAttributes: new { @class = "control-label col-md-2" })
                         <div class="col-md-10">
-                            @Html.EditorFor(model => model.Image, new { htmlAttributes = new { @class = "form-control", @type = "file" } })
+                            @Html.EditorFor(model => model.Origin, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Origin, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        Image for product:
+                        <div class="col-md-10">
+                            @*<input name="Image" type="file" class="form-control"/>*@
+                            @Html.EditorFor(model => model.Image, new { htmlAttributes = new { @type = "file", @class = "form-control" } })
                             @Html.ValidationMessageFor(model => model.Image, "", new { @class = "text-danger" })
                         </div>
                     </div>
 
 
-
                     <div class="form-group">
                         <div class="col-md-offset-2 col-md-10">
-                            <input type="submit" value="Create" class="btn btn-success btn-rounded btn-fw" />
+                            <input type="submit" value="Create" class="btn btn-default" />
                         </div>
                     </div>
                 </div>
@@ -90,6 +95,6 @@
         </div>
     </div>
 </div>
-<div class="col-12">
-    <a href="/AdminProducts/Index" class="btn btn-inverse-dark btn-fw"><i class="fa fa-backward"></i>Back to list</a>
+<div>
+    @Html.ActionLink("Back to List", "Index")
 </div>

@@ -46,24 +46,14 @@ namespace AdminWebSite.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(Categories categories)
+        public ActionResult Create([Bind(Include = "CateID,CateName")] Categories categories)
         {
-            var br = (from Categories in db.Categories where Categories.CateName == categories.CateName.ToString() select new { Categories.CateID }).FirstOrDefault();
-            if (br != null)
+            if (ModelState.IsValid)
             {
-                ViewBag.Error = "This category already exists.";
-                return View(categories);
+                db.Categories.Add(categories);
+                db.SaveChanges();
+                return RedirectToAction("Index");
             }
-            else
-            {
-                if (ModelState.IsValid)
-                {
-                    db.Categories.Add(categories);
-                    db.SaveChanges();
-                    return RedirectToAction("Index");
-                }
-            }
-                
 
             return View(categories);
         }
@@ -88,24 +78,14 @@ namespace AdminWebSite.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(Categories categories)
+        public ActionResult Edit([Bind(Include = "CateID,CateName")] Categories categories)
         {
-            var br = (from Categories in db.Categories where Categories.CateName == categories.CateName.ToString() select new { Categories.CateID }).FirstOrDefault();
-            if (br != null)
+            if (ModelState.IsValid)
             {
-                ViewBag.Error = "This category already exists.";
-                return View(categories);
+                db.Entry(categories).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("Index");
             }
-            else
-            {
-                if (ModelState.IsValid)
-                {
-                    db.Entry(categories).State = EntityState.Modified;
-                    db.SaveChanges();
-                    return RedirectToAction("Index");
-                }
-            }
-                
             return View(categories);
         }
 

@@ -1,0 +1,56 @@
+﻿@model IEnumerable<AdminWebSite.Models.OrderDetail>
+<table class="table">
+    <tr>
+        <th>
+           Order ID:
+        </th>
+        <th>
+           Full Name:
+        </th>
+        <th>
+            Date:
+        </th>
+        <th>
+           Product:
+        </th>
+        <th>
+            Quantity:
+        </th>
+        <th>
+            Price:
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Order.OrderID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Order.Customer.FullName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Order.Date)
+            </td>>
+            <td>
+                @Html.DisplayFor(modelItem => item.Product.ProName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Quantity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+        </tr>
+    }
+
+</table>
+
+
+<div style="padding:10px ; border: 1px solid black">
+    <div><a href="@Url.Action("XuatReport",new { id = "PDF"})">Get Report PDF</a></div>
+    <div><a href="@Url.Action("XuatReport",new { id = "Excel"})">Get Report Excel</a></div>
+    <div><a href="@Url.Action("XuatReport",new { id = "Word"})">Get Report Word</a></div>
+</div>
+
