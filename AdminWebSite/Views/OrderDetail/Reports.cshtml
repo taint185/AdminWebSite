@@ -1,56 +1,52 @@
 ﻿@model IEnumerable<AdminWebSite.Models.OrderDetail>
+
+@{
+    ViewBag.Title = "Reports";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Reports</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
 <table class="table">
     <tr>
         <th>
-           Order ID:
+            @Html.DisplayNameFor(model => model.Quantity)
         </th>
         <th>
-           Full Name:
+            @Html.DisplayNameFor(model => model.Price)
         </th>
         <th>
-            Date:
+            @Html.DisplayNameFor(model => model.Order.CusName)
         </th>
         <th>
-           Product:
+            @Html.DisplayNameFor(model => model.Product.ProName)
         </th>
-        <th>
-            Quantity:
-        </th>
-        <th>
-            Price:
-        </th>
+        <th></th>
     </tr>
 
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Order.OrderID)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Order.Customer.FullName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Order.Date)
-            </td>>
-            <td>
-                @Html.DisplayFor(modelItem => item.Product.ProName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Quantity)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Price)
-            </td>
-        </tr>
-    }
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Quantity)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Price)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Order.CusName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Product.ProName)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.OrderDetailID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.OrderDetailID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.OrderDetailID })
+        </td>
+    </tr>
+}
 
 </table>
-
-
-<div style="padding:10px ; border: 1px solid black">
-    <div><a href="@Url.Action("XuatReport",new { id = "PDF"})">Get Report PDF</a></div>
-    <div><a href="@Url.Action("XuatReport",new { id = "Excel"})">Get Report Excel</a></div>
-    <div><a href="@Url.Action("XuatReport",new { id = "Word"})">Get Report Word</a></div>
-</div>
-
